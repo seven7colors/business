@@ -1,0 +1,32 @@
+{include file="public/header"}
+<div>
+	<h3 style="color: red;font-weight: bold;">
+		幻灯片管理一览表
+	</h3>
+		<a class="btn btn-success" href="{:url('add')}">添加幻灯片</a>
+		<a class="btn btn-success" href="{:url('LSDadd')}">添加大屏幕</a>
+	
+	<table class="table">
+		<tr>
+			<th style="width: 10%">幻灯片分类</th>
+			<th style="width: 80%">幻灯片</th>
+			<th style="width: 10%"> 操作</th>
+		</tr>
+		{foreach $carousel_data as $g}
+		<tr>
+			<th>{$g.cate_name}</th>
+			<th>
+				{foreach $g.many_thumb as $c}
+			<img src="__PUBLIC__/uploads/{$c}" style="width: 100px;height: 100px;float:left;margin-left: 10px;">	
+				{/foreach}		
+		    </th>
+			<th>
+				<a href="{:url('edit',['id'=>$g.id])}" class="btn btn-info">编辑
+				</a>
+			</th>
+		</tr>
+		{/foreach}
+	</table>
+	
+</div>
+{include file="public/footer"}

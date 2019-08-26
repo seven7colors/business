@@ -1,0 +1,83 @@
+{include file="public/header"}
+<div class="box">
+
+	<div>
+		<h3 style="color: red;font-weight: bold;">添加商品</h3>
+	</div>
+	<form method="post" enctype="multipart/form-data" class="form" 
+	action="{:url('save')}">
+	  <div class="form-group">
+	    <label>商品名称</label>
+	    <input type="text" class="form-control" name="g_name">
+	  </div>
+	  <div class="form-group">
+	    <label>商品价格</label>
+	    <input type="text" class="form-control" name="g_price">
+	  </div>
+	   <div class="form-group">
+	    <label>商品库存</label>
+	    <input type="text" class="form-control" name="inventory">
+	  </div>
+	  <div class="form-group">
+	    <label>商品概述</label>
+	    <textarea class="form-control" rows="3" name="g_content" id="content" style="height: 300px;">
+	    </textarea>
+	  </div>
+	   <div class="form-group">
+	    <label>商品分类</label>
+       <select name="cate_id">
+			<option value="">请选择</option>
+			<!-- 一级 -->
+			{foreach $cate_list as $val}
+			<option value="{$val['id']}">{$val['cate_name']}</option>
+			<!-- 二级分类遍历 -->
+				{foreach $val['son'] as $s_val}
+				<option value="{$s_val['id']}">&nbsp;&nbsp;&nbsp;&nbsp;{$s_val['cate_name']}</option>
+				{/foreach}
+				
+			{/foreach}
+	  </select>
+	  </div>
+	  
+	  <div class="form-group">
+			<div style="display: block;width: 100%">
+				<label >商品图片</label>
+			</div>
+			
+			<div style="width: 180px;float:left;margin-left: 10px; ">
+				<input  type="file" class="dropify" class="form-control" name="g_thumb[]"></div>
+			<div style="width: 180px;float:left;margin-left: 10px;">
+				<input  type="file" class="dropify" class="form-control" name="g_thumb[]"></div>
+			<div style="width: 180px;float:left;margin-left: 10px;">
+				<input  type="file" class="dropify" class="form-control" name="g_thumb[]"></div>
+			<div style="width: 180px;float:left;margin-left: 10px;">
+				<input  type="file" class="dropify" class="form-control" name="g_thumb[]"></div>
+			<div style="width: 180px;float:left;margin-left: 10px;">
+				<input  type="file" class="dropify" class="form-control" name="g_thumb[]"></div>
+		</div>
+	  <button type="submit" class="btn btn-danger" style="display: block;margin-top: 250px;">确认添加</button>
+	</form>
+</div>
+<link rel="stylesheet" type="text/css" href="http://ueditor.baidu.com/umeditor/themes/default/css/umeditor.min.css">
+<script type="text/javascript" src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="__PUBLIC__/static/admin/bootstrap-vue.min.js"></script>
+<script src="__PUBLIC__/static/admin/baidu_editor/umeditor.config.js"></script>
+<script src="__PUBLIC__/static/admin/baidu_editor/umeditor.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/library/dropify/dropify.min.css">
+<script type="text/javascript" src="__PUBLIC__/static/library/dropify/dropify.min.js"></script>
+
+
+
+<script type="text/javascript">
+	$('.dropify').dropify({
+		'messages':{
+			'default':'请上传商品的图片',
+			'replace':'可以直接上传另外图片进行替换'
+		}
+	});
+	
+	var um = UM.getEditor('content');
+</script>
+{include file="public/footer"}

@@ -1,0 +1,32 @@
+{include file="public/header"}
+<div>
+	<h3 style="color: red;font-weight: bold;">
+		分类管理一览表
+	</h3>
+		<a class="btn btn-success" href="{:url('add')}">添加父分类</a>
+	
+	<table class="table">
+		<tr>
+			<th>ID</th>
+			<th>父分类名称</th>
+			<th>操作</th>
+		</tr>
+		{foreach $Catedata as $g}
+		<tr>
+			<th>{$g.id}</th>
+			<th>{$g.cate_name}</th>
+			<th>
+				<a href="{:url('edit',['id'=>$g.id])}" class="btn btn-info">编辑
+				</a>
+				<a href="{:url('sonIndex',['id'=>$g.id])}" class="btn btn-info">子分类
+				</a>
+				<a href="{:url('delete',['id'=>$g.id])}" class="btn btn-info">删除</a>
+			</th>
+		</tr>
+		{/foreach}
+	</table>
+	<div>
+		{$Catedata->render()}
+	</div>
+</div>
+{include file="public/footer"}

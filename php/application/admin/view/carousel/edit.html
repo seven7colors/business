@@ -1,0 +1,56 @@
+{include file="public/header"}
+<div class="box">
+	<a class="btn btn-success" href="{:url('index')}">返回</a>
+	<div>
+		<h3 style="color: red;font-weight: bold;">编辑幻灯片</h3>
+	</div>
+	<form method="post" enctype="multipart/form-data" class="form" action="{:url('update')}">
+
+	   <div class="form-group">
+			<div style="display: block;width: 100%"> 
+				<label>播放图片</label>
+			</div>
+			
+			<div style="width: 180px;float:left;margin-left: 10px; ">
+				<input  type="file" class="dropify" class="form-control" name="g_thumb[]"></div>
+			<div style="width: 180px;float:left;margin-left: 10px;">
+				<input  type="file" class="dropify" class="form-control" name="g_thumb[]"></div>
+			<div style="width: 180px;float:left;margin-left: 10px;">
+				<input  type="file" class="dropify" class="form-control" name="g_thumb[]"></div>
+			<div style="width: 180px;float:left;margin-left: 10px;">
+				<input  type="file" class="dropify" class="form-control" name="g_thumb[]"></div>
+			<div style="width: 180px;float:left;margin-left: 10px;">
+				<input  type="file" class="dropify" class="form-control" name="g_thumb[]"></div>
+		</div>
+	   <div class="form-group" style="display: block; margin-top: 250px;">
+	    <label>幻灯片分类</label>
+	       <select name="cate_id">
+				<option value="{$info.cate_id}">{$info.cate_name}</option>
+		  </select>
+	  </div>
+	  <button type="submit" class="btn btn-danger" style="display: block;margin-top: 50px;">确认更新</button>
+	</form>
+</div>
+<link rel="stylesheet" type="text/css" href="http://ueditor.baidu.com/umeditor/themes/default/css/umeditor.min.css">
+<script type="text/javascript" src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="__PUBLIC__/static/admin/bootstrap-vue.min.js"></script>
+<script src="__PUBLIC__/static/admin/baidu_editor/umeditor.config.js"></script>
+<script src="__PUBLIC__/static/admin/baidu_editor/umeditor.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/library/dropify/dropify.min.css">
+<script type="text/javascript" src="__PUBLIC__/static/library/dropify/dropify.min.js"></script>
+
+
+
+<script type="text/javascript">
+	$('.dropify').dropify({
+		'messages':{
+			'default':'请上传商品的图片',
+			'replace':'可以直接上传另外图片进行替换'
+		}
+	});
+	
+	
+</script>
+{include file="public/footer"}

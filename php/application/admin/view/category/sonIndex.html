@@ -1,0 +1,30 @@
+{include file="public/header"}
+<div>
+	<h3 style="color: red;font-weight: bold;">
+		子分类管理一览表
+	</h3>
+		<a class="btn btn-success" href="{:url('addSon',['pid'=>$pid])}">添加子分类</a>
+		
+	<table class="table">
+		<tr>
+			<th>ID</th>
+			<th>子分类名称</th>
+			<th>操作</th>
+		</tr>
+		{foreach $sondata as $g}
+		<tr>
+			<th>{$g.id}</th>
+			<th>{$g.cate_name}</th>
+			<th>
+				<a href="{:url('editSon',['id'=>$g.id])}" class="btn btn-info">编辑
+				</a>
+				<a href="{:url('deleteSon',['id'=>$g.id,'pid'=>$pid])}" class="btn btn-info">删除</a>
+			</th>
+		</tr>
+		{/foreach}
+	</table>
+	<div>
+		
+	</div>
+</div>
+{include file="public/footer"}

@@ -1,0 +1,41 @@
+{include file="public/header"}
+<div>
+	<h3 style="color: red;font-weight: bold;">
+		商品管理一览表
+	</h3>
+		<a class="btn btn-success" href="{:url('add')}">添加商品</a>
+		
+	
+	<table class="table">
+		<tr>
+			<th>ID</th>
+			<th>商品分类</th>
+			<th>商品名称</th>
+			<th>价格</th>
+			<th>商品图片</th>
+			<th>库存</th>>
+			<th>操作</th>
+		</tr>
+		{foreach $list as $g}
+		<tr>
+			<th>{$g.id}</th>
+			<th>{$g.cate_name}</th>
+			<th>{$g.g_name}</th>
+			<th>{$g.g_price}</th>
+			<th>{$g.inventory}</th>
+			<th>
+			<img src="__PUBLIC__/{$g.g_thumb}" style="width: 100px;height: 100px;">			
+		    </th>
+			<th>
+				<a href="{:url('edit',['id'=>$g.id])}" class="btn btn-info">编辑
+				</a>
+				<a href="{:url('delete',['id'=>$g.id])}" class="btn btn-info">删除</a>
+			</th>
+		</tr>
+		{/foreach}
+	</table>
+	<div>
+		{$list->render()}
+	</div>
+</div>
+{include file="public/footer"}
